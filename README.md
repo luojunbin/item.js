@@ -10,6 +10,7 @@ state = {
 
 ## 2. 主要接口
 - EForm - (表单ID) - 表单构造函数
+
 - item - (表单字段名) - 字段构造函数
 - msg - () - 仅用作保存变量, 并传入fail与success回调中
 - validate - (fn: 自定义验证函数) - this为当前表单字段, fn将传入当前字段的value, type=checkbox时value表现为[1], [1,2], []; 当返回false时表示自定义验证成功, 否则表示失败, 且返回的值将直接放入state的customMismatch中;
