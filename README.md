@@ -2,7 +2,7 @@
 
 
 ## 目录
-[TOC]
+  [TOC]
 
 ## 介绍
 item.js 是一个表单验证辅助插件, 兼容IE8及以上浏览器, 其验证方式有三种: require属性, pattern属性和validate方法; 
