@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+
+    <form action="" method="post" id="register">
+        <dl class="cf">
+
+            <dt>用户名</dt>
+            <dd>
+                <input type="text" name="username" class="text" maxlength="50" pattern="[a-zA-Z ]+" placeholder="只允许输入字母或空格" required>
+                <div class="hint"></div>
+            </dd>
+            
+            <dt>密码</dt>
+            <dd>
+                <input class="text" name="password" type="password" maxlength="16" pattern="\w{6,16}" placeholder="只允许输入字母或数字" required>
+                <div class="hint"></div>
+            </dd>
+                
+            <dt>重复</dt>
+            <dd>
+                <input class="text" name="repeatPwd" type="password" maxlength="16" pattern="\w{6,16}" placeholder="只允许输入字母或数字" required>
+                <div class="hint"></div>
+            </dd>
+            
+            <dt>性别</dt>
+            <dd>
+                <label>
+                    <input type="radio" name="gender" class="hidden-radio" value="0" required>
+                    <div class="btn male-btn"><i></i></div>
+                </label>
+                <label>
+                    <input type="radio" name="gender" class="hidden-radio" value="1" required>
+                    <div class="btn female-btn"><i></i></div>
+                </label>
+                <div class="hint"></div>
+            </dd>
+
+            <dt>手机</dt>
+            <dd>
+                <input class="text" name="phoneNum" maxlength="11" pattern="\d{11}" placeholder="输入11位数字" required>
+                <div class="hint"></div>
+            </dd>
+
+            <dt>验证码</dt>
+            <dd>
+                <div class="authcode">
+                    <input type="text" name="code" class="text captcha" pattern="\d{6}" maxlength="6" placeholder="输入6位数字" required>                    <div class="hint"></div>
+                </div>
+            </dd>
+
+            <dt>城市</dt>
+            <dd>
+                <select name="city" class="select" pattern="0" required>
+                    <option value="">--请选择城市--</option>
+                    <option value="0">北</option>
+                    <option value="1">上</option>
+                    <option value="2">广</option>
+                    <option value="3">深</option>
+                </select>
+                <div class="hint"></div>
+            </dd>            
+
+            <dt>爱好</dt>
+            <dd>
+                <div class="checkbox-ctn">
+                    <label class="checkbox">
+                        <input type="checkbox" name="hobby" value="0"> 运动
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="hobby" value="1"> 阅读
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="hobby" value="2"> 游戏
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="hobby" value="3"> 吸毒
+                    </label>
+                </div>
+                <div class="hint"></div>
+            </dd>
+
+            <dt></dt>
+            <dd>
+                <a id="submit" class="submit disabled" href="javascript:;">提交</a>
+            </dd>
+
+        </dl>
+
+    </form>
+
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="../../dist/output/result.js"></script>
+    <script type="text/javascript" src="chained.js"></script>
+
+
+
+</body>
+</html>

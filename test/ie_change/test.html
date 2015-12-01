@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="../test.css">
+</head>
+<body>
+    <h1>IE8- 下change方法兼容</h1>
+    <form action="" method="post" id="register">
+        <dl class="cf">
+
+            <dt>用户名input</dt>
+            <dd>
+                <input type="text" name="username" class="text" maxlength="50" pattern="[a-zA-Z ]+" required>
+            </dd>
+            
+            <dt>性别radio</dt>
+            <dd>
+                <label>
+                    <input type="radio" name="gender" class="hidden-radio" value="0" required>
+                    <div class="btn male-btn"><i></i></div>
+                </label>
+                <label>
+                    <input type="radio" name="gender" class="hidden-radio" value="1" required>
+                    <div class="btn female-btn"><i></i></div>
+                </label>
+            </dd>
+
+            <dt>城市select</dt>
+            <dd>
+                <select name="city" class="select" pattern="0" required>
+                    <option value="">--请选择城市--</option>
+                    <option value="北">北</option>
+                    <option value="上">上</option>
+                    <option value="广">广</option>
+                    <option value="深">深</option>
+                </select>
+            </dd>            
+
+            <dt>爱好</dt>
+            <dd>
+                <div class="checkbox-ctn">
+                    <label class="checkbox">
+                        <input type="checkbox" name="hobby" value="0"> 运动
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="hobby" value="1"> 阅读
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="hobby" value="2"> 游戏
+                    </label>
+
+                    <label class="checkbox">
+                        <input type="checkbox" name="hobby" value="3"> 吸毒
+                    </label>
+                </div>
+            </dd>
+
+        </dl>
+
+    </form>
+
+    <script type="text/javascript" src="../jquery.js"></script>
+    <script type="text/javascript" src="event.js"></script>
+    <script type="text/javascript" src="test.js"></script>
+
+
+
+</body>
+</html>
