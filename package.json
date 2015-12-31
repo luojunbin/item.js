@@ -1,0 +1,21 @@
+{
+    "name": "item.js",
+    "description": "form validate",
+    "homepage": "https://github.com/luojunbin/item.js",
+    "keywords": [
+        "util",
+        "validate",
+        "form"
+    ],
+    "author": "luojunbin <lqwcwsse@gmail.com>",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/luojunbin/item.js.git"
+    },
+    "main": "./dist/index.js",
+    "version": "2.1.7",
+    "devDependencies": {
+        "express": "~4.4.3",
+    },
+    "license": "MIT"
+}
