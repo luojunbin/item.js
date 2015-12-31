@@ -1,10 +1,19 @@
+var definePlugin = new webpack.DefinePlugin({
+    __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || 'true')),
+    __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || 'false'))
+});
+
+var commonsPlugin = new webpack.optimize.CommonsChunkPlugin('common.js');
+
+
 module.exports = {
-    entry: [
-        './entry.js'
-    ],
+    entry: {
+        index: './entry.js',
+        result: './entry.js'
+    },
     output: {
-        path: __dirname + '/output/',
-        publicPath: "/output/",
-        filename: 'result.js'
-    }
+        path: '../dist/',
+        filename: '[name].js'
+    },
+    plugins: [definePlugin]
 };

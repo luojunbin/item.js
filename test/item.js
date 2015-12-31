@@ -270,7 +270,7 @@ Result.prototype = {
         return this.isStrict ? hasStrictChange : hasChange;
     },
     // 强行通过验证
-    forceSuc: function () {
+    forcePass: function () {
         var state = this.state;
         var value = !this.inverse;
         for (var key in state) {
@@ -513,7 +513,7 @@ EForm.prototype = {
         if (this.result.getSum() === false) {
             this.callbacks.success && this.callbacks.success();
             // 不给强制成功
-            // this.result.forceSuc();
+            // this.result.forcePass();
         } else {
             this.callbacks.fail && this.callbacks.fail();
         }
@@ -628,7 +628,7 @@ Field.prototype = {
             this.callbacks.success.apply(ele, args);
 
             if (args[0] !== true) {
-                this.validityState.forceSuc();
+                this.validityState.forcePass();
             }
             
             this.parent.handle(this.getProp('name'), false);

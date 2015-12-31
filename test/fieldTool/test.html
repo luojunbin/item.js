@@ -6,8 +6,23 @@
     <link rel="stylesheet" href="../test.css">
 </head>
 <body>
-    <h1>IE8- 下change方法兼容, 控制台输出的值将与chrome下保持一致</h1>
-    <form action="" method="post" id="register">
+    <h1>fieldTool工具方法测试, </h1>
+    <form id="register">
+        <dl class="cf">
+
+            <dt>name input</dt>
+            <dd>
+                <input type="text" id="nameInput" placeholder="输入下列表单中的name" class="text">
+            </dd>
+
+
+            <dt>value input</dt>
+            <dd>
+                <input type="text" id="valueInput" placeholder="输入下列表单中的value" class="text">
+            </dd>
+        </dl>
+    </form>
+    <form id="register">
         <dl class="cf">
 
             <dt>用户名input</dt>
@@ -36,7 +51,7 @@
                     <option value="广">广</option>
                     <option value="深">深</option>
                 </select>
-            </dd>
+            </dd>            
 
             <dt>爱好</dt>
             <dd>
@@ -65,6 +80,7 @@
 
     <script type="text/javascript" src="../jquery.js"></script>
     <script type="text/javascript" src="event.js"></script>
+    <script type="text/javascript" src="fieldtool.js"></script>
     <script type="text/javascript" src="test.js"></script>
 
 

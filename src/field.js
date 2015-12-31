@@ -164,7 +164,7 @@ Field.prototype = {
             this.callbacks.success.apply(ele, args);
 
             if (args[0] !== true) {
-                this.validityState.forceSuc();
+                this.validityState.forcePass();
             }
             
             this.parent.handle(this.getProp('name'), false);

@@ -129,4 +129,4 @@ var fieldTool = (function () {
     }
 })();
 
-module.exports = fieldTool;
+// module.exports = fieldTool;

@@ -5,7 +5,6 @@
  *                  true: __sum将用 ||方式计算;
  */
 
-
 function Result(inverse, isStrict) {
     this.__sum = !inverse;
     this.inverse = !!inverse;
@@ -110,4 +109,4 @@ Result.prototype = {
     }
 };
 
-module.exports = Result;
+// module.exports = Result;

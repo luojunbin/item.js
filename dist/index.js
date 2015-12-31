@@ -34,7 +34,7 @@
 /******/ 	__webpack_require__.c = installedModules;
 
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/output/";
+/******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(0);
@@ -44,29 +44,22 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(1);
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var EForm = __webpack_require__(1);
+	window.EForm = EForm;
+	console.log(EForm)
+	if ( "function" === "function" && __webpack_require__(6) && __webpack_require__(6).itemJs ) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () { return EForm; }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	}
 
 
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;var EForm = __webpack_require__(2);
-	window.EForm = EForm;
-	console.log(EForm)
-	if ( "function" === "function" && __webpack_require__(7) && __webpack_require__(7).itemJs ) {
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function () { return EForm; }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	}
-
-
-/***/ },
-/* 2 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var Result = __webpack_require__(3);
-	var E = __webpack_require__(4);
-	var Field = __webpack_require__(5);
-	var fieldTool = __webpack_require__(6)
+	var Result = __webpack_require__(2);
+	var E = __webpack_require__(3);
+	var Field = __webpack_require__(4);
+	var fieldTool = __webpack_require__(5)
 
 
 	// 防止keydow 和change 冲突
@@ -248,7 +241,7 @@
 	        if (this.result.getSum() === false) {
 	            this.callbacks.success && this.callbacks.success();
 	            // 不给强制成功
-	            // this.result.forceSuc();
+	            // this.result.forcePass();
 	        } else {
 	            this.callbacks.fail && this.callbacks.fail();
 	        }
@@ -259,7 +252,7 @@
 
 
 /***/ },
-/* 3 */
+/* 2 */
 /***/ function(module, exports) {
 
 	/**
@@ -355,7 +348,7 @@
 	        return this.isStrict ? hasStrictChange : hasChange;
 	    },
 	    // 强行通过验证
-	    forceSuc: function () {
+	    forcePass: function () {
 	        var state = this.state;
 	        var value = !this.inverse;
 	        for (var key in state) {
@@ -368,7 +361,7 @@
 	module.exports = Result;
 
 /***/ },
-/* 4 */
+/* 3 */
 /***/ function(module, exports) {
 
 	
@@ -431,11 +424,11 @@
 
 
 /***/ },
-/* 5 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Result = __webpack_require__(3);
-	var fieldTool = __webpack_require__(6);
+	var Result = __webpack_require__(2);
+	var fieldTool = __webpack_require__(5);
 
 	// 本地 validityState属性的获取, 兼容方法
 	var mainVali = (function () {
@@ -600,7 +593,7 @@
 	            this.callbacks.success.apply(ele, args);
 
 	            if (args[0] !== true) {
-	                this.validityState.forceSuc();
+	                this.validityState.forcePass();
 	            }
 	            
 	            this.parent.handle(this.getProp('name'), false);
@@ -658,25 +651,33 @@
 	module.exports = Field;
 
 /***/ },
-/* 6 */
+/* 5 */
 /***/ function(module, exports) {
 
 	// 操作表单工具
-	var fieldTool = {
+	var fieldTool = (function () {
+
+	    function isNode(field) {
+	        return field.nodeType === 1;
+	    }
+
+	    // 不能判断select元素
+	    function isNodeList(field) {
+	        return 'length' in field;
+	    }
 
 	    // 通过 form.elements[name]获取的 NodeList, 可通过本方法获得 value
-	    getValue: function (field, propName) {
-	        // 元素节点, 直接返回
-	        if (field.nodeType === 1) {
+	    function getValue(field) {
+
+	        if (isNode(field)) {
 	            return field.value;
 	        }
-	        // 上面排除 select元素, 有 length属性为 NodeList;
-	        if ('length' in field) {
+	        if (isNodeList(field)) {
 	            var len = field.length;
 	            var value = [];
-	            var isRadio = field[0].type === 'radio';
+	            var isRadio = getProp(field, 'type') === 'radio';
 
-	            // IE8+ 版本浏览器的 radio NOdeList可直接通过 value属性访问选中的值
+	            // IE8+ 版本浏览器的 radio NodeList可直接通过 value属性访问选中的值
 	            if (isRadio && 'value' in field) {
 	                return field.value;
 	            }
@@ -692,20 +693,20 @@
 	            }
 	            return isRadio ? '' : value;
 	        }
-	    },
+	    }
 
-	    setValue: function (field, value) {
+	    function setValue(field, value) {
 	        // 元素节点, 直接返回
-	        if (field.nodeType === 1) {
-	            field.value = value;
+	        if (isNode(field)) {
+	            return (field.value = value);
 	        }
-	        else if ('length' in field) {
+	        if (isNodeList(field)) {
 	            var len = field.length;
-	            var type = field[0].type;
+	            var type = getProp(field, 'type');
 
 	            // 为''或[]时, reset
 	            if (value.length === 0) {
-	                return fieldTool.reset(field);
+	                return reset(field);
 	            }
 
 	            if (type === 'radio') {
@@ -726,43 +727,42 @@
 	                    l === value.length && (field[len].checked = false);
 	                }
 	            }
+	            return value;
 	        }
-	        return value;
-	    },
+	    }
 
-	    reset: function (field) {
-	        if (field.nodeType === 1) {
-	            field.value = '';
-	            return ;
+	    function reset(field) {
+	        if (isNode(field)) {
+	            return (field.value = '');
 	        }
 
 	        for (var i = 0, len = field.length; i < len; i++) {
 	            field[i].checked = false;
 	        }
-	    },
+	    }
 
 	    // 创建一个input元素, 判断是否含该属性, 用于兼容性判断
-	    support: function (propName) {
+	    function support(propName) {
 	        return propName in document.createElement('input');
-	    },
+	    }
 
 	    // 属性获取
-	    getProp: function (field, propName) {
+	    function getProp(field, propName) {
 	        // 待获取的属性是 value的特殊处理
 	        if (propName === 'value') {
-	            return fieldTool.getValue(field, propName);
+	            return getValue(field, propName);
 	        }
 	        return propName in field ? field[propName] : field[0][propName];
-	    },
+	    }
 
 	    // 获取通过
-	    getField: function (field) {
+	    function getField(field) {
 	        // 是 DOM元素, 直接返回
-	        if (field.nodeType === 1) {
+	        if (isNode(field)) {
 	            return field;
 	        }
 	        // nodeList, 为 checkbox或 radio
-	        if ('length' in field) {
+	        if (isNodeList(field)) {
 	            var len = field.length;
 	            // 返回第一个被选中的元素或第一个元素
 	            while (len--) {
@@ -772,14 +772,23 @@
 	            }
 	            return field[0];
 	        }
-	        return null;
+	        throw Error(field + 'is not a field');
 	    }
-	};
+
+	    return {
+	        getValue: getValue,
+	        setValue: setValue,
+	        reset: reset,
+	        support: support,
+	        getProp: getProp,
+	        getField: getField
+	    }
+	})();
 
 	module.exports = fieldTool;
 
 /***/ },
-/* 7 */
+/* 6 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;

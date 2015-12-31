@@ -90,6 +90,21 @@ EForm.prototype = {
         }
     },
 
+    state: function (fieldName, value) {
+        switch (arguments.length) {
+            // 返回整个 _data对象
+            case 0:
+                return this.result.state;
+            // getter
+            case 1:
+                return this.result.get(fieldNam);
+            // setter
+            case 2:
+                this.result.set(fieldName, value);
+                return this;
+        }
+    },
+
     isSucceed: function () {
         return this.result.getSum() !== this.result.inverse;
     },
@@ -103,7 +118,7 @@ EForm.prototype = {
         }
         // 不传参, 验证所有表单
         if (arguments.length === 0) {
-            var state = this.result.state;
+            var state = this.state();
             var failKeys = [];
             for (var key in state) {
                 if (state.hasOwnProperty(key) && state[key]) {
@@ -183,7 +198,7 @@ EForm.prototype = {
         if (this.result.getSum() === false) {
             this.callbacks.success && this.callbacks.success();
             // 不给强制成功
-            // this.result.forceSuc();
+            // this.result.forcePass();
         } else {
             this.callbacks.fail && this.callbacks.fail();
         }
