@@ -2,7 +2,7 @@
 
 
 ## 目录
-
+[oTOC]
 
 ## 介绍
 item.js 是一个表单验证辅助插件, 兼容IE8及以上浏览器, 其验证方式有三种: require属性, pattern属性和validate方法; 
@@ -101,7 +101,7 @@ item.js 是一个表单验证辅助插件, 兼容IE8及以上浏览器, 其验�
    form.isSucceed(); // true or false
 ```
 
-### add
+### virtual
 参数: (String virtualFieldName),参数表示虚拟字段名; 这个方法用于扩展一些非原生表单的字段, 比如我们经常会用自定义的下拉框来代替原生的select和option的组合, 这时可以使用这个方法来添加一个不存在的字段; 生成的虚拟字段有以下使用限制:
         1. 由于这个字段的表单中并不存在, 所以required和pattern属性均不可用, 这时只能使用万能的validate方法来完成所有验证逻辑;
         2. 同样的原因, 只能使用val方法来给该字段赋值;
@@ -110,7 +110,7 @@ item.js 是一个表单验证辅助插件, 兼容IE8及以上浏览器, 其验�
 
 ```js
 示例
-    form.add('virtualField');
+    form.virtual('virtualField');
     form.item('virtualField')
         .validate()
         .success()
@@ -243,4 +243,38 @@ state = {
     
 ## 结语
 demo可能会比文档更好理解, 文档中有不明白的地方请联系作者邮箱<lqwcwsse@gmail.com>;
+
+## 更新日志
+### V1.5
+1. 修复BUG无数
+2. 重构验证逻辑
+
+### V1.6
+1. 修改EForm的check方法返回一个失败的数组;
+    
+### V1.6
+1. 增加对虚拟表单的支持
+
+### V1.6
+1. 增加对虚拟表单的支持
+
+
+### V1.6
+1. 增加对虚拟表单的支持
+
+
+### V1.6
+1. 增加对虚拟表单的支持
+
+
+### V1.6
+1. 增加对虚拟表单的支持
+
+
+### V1.6
+1. 增加对虚拟表单的支持
+
+
+    
+
 

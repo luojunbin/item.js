@@ -1,21 +1,32 @@
 {
-    "name": "item.js",
-    "description": "form validate",
-    "homepage": "https://github.com/luojunbin/item.js",
-    "keywords": [
-        "util",
-        "validate",
-        "form"
-    ],
-    "author": "luojunbin <lqwcwsse@gmail.com>",
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/luojunbin/item.js.git"
-    },
-    "main": "./dist/index.js",
-    "version": "2.1.7",
-    "devDependencies": {
-        "express": "~4.4.3",
-    },
-    "license": "MIT"
+  "name": "item.js",
+  "version": "2.1.7",
+  "description": "form validate",
+  "main": "./dist/index.js",
+  "directories": {
+    "doc": "doc",
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^1.12.11"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luojunbin/item.js.git"
+  },
+  "keywords": [
+    "util",
+    "validate",
+    "form"
+  ],
+  "author": "luojunbin<lqwcwsse@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luojunbin/item.js/issues"
+  },
+  "homepage": "https://github.com/luojunbin/item.js#readme"
 }

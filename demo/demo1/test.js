@@ -3,6 +3,7 @@ var l = console.log.bind(console, 'l');
 
 // 找到输入框右边的div.hint, 把msg填进去
 function writeHint(ele, msg) {
+    l(msg)
     $(ele).parents('dd').find('.hint').html(msg);
 }
 
@@ -30,7 +31,7 @@ var fields = 'username gender phoneNum city'.split(/\s+/);
 
 var commonMsg = {
     valueMissing: '该项不能为空',
-    patternMismatch: '输入错误',
+    patternMismatch: '输入错误',    
     success: '<i class="success"></i>'
 };
 
@@ -180,7 +181,7 @@ rg.success(function () {
         $('#submit').addClass('disabled');
     });
 
-rg.init();
+rg.init('change');
 
 
 
@@ -193,9 +194,6 @@ $('#register').on('click', '.submit', function () {
 
     alert('你提交的数据为' + JSON.stringify(rg.data()))
 });
-
-
-var l = console.log.bind(console, 'lwss');
 
 
 
