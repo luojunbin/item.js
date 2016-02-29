@@ -75,6 +75,9 @@ Field.prototype = {
     },
 
     getProp: function (propName) {
+        if (propName === 'name') {
+            return this.name;
+        }
         return this._field && fieldTool.getProp(this._field, propName);
     },
 
