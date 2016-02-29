@@ -64,7 +64,7 @@ Result.prototype = {
     // 用于更新 __sum
     add: function (item) {
         if (item === this.inverse || this.__sum !== this.inverse) {
-            return this.setSum(this.inverse);
+            return this.setSum(item);
         }
 
         var iv = this.inverse;

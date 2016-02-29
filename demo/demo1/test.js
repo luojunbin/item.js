@@ -156,22 +156,6 @@ rg.item('hobby')
 
 var i = 0;
 
-rg.virtual('test')
-    .msg({
-        aaa: 'aaaaaa'
-    })
-    .validate(function (value) {
-        l(value);
-        return value === '1' ? false : value;
-    })
-    .success(function (msg) {
-        l(msg)
-    })
-    .fail(function (state, msg) {
-        l(state, msg)
-    })
-    .init('0');
-
 
 // 注册成功按钮在全部字段成功后变为红色
 rg.success(function () {
@@ -181,7 +165,7 @@ rg.success(function () {
         $('#submit').addClass('disabled');
     });
 
-rg.init('change');
+rg.init();
 
 
 
